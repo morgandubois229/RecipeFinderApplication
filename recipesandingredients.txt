@@ -1,0 +1,225 @@
+BEGIN;
+INSERT INTO Customer (FirstName, MiddleName, LastName, Email, Password)
+VALUES ('Test', 'User', 'Person', 'Testuserperson@email.com', 'Password');
+
+INSERT INTO State (ID, Description)
+VALUES ('WA', 'Washington'),
+	('OR', 'Oregon'),
+	('CA', 'California');
+
+
+INSERT INTO Recipe (RecipeNumber, Name, Description)
+VALUES (30, 'Steak and Potatoe Hash', 'Heat a grill pan and sprinkle each side of the steak with salt. Cook and turn over.
+	  Remove from pan and tent with foil on a plate for 10 minutes. In a large saute pan over medium heat, 
+	add the first teaspoon of olive oil and add the peppers and onion. Add the potatoes and remaining olive oil and cook
+	Meanwhile, chop the steak, and once the potatoes are cooked add the steak, toss and allow to cook an additional 2 minutes.
+	Serve with fresh cilantro for a little freshness.');
+INSERT INTO Ingredient (Barcode, Name)
+VALUES ('734463830880', 'Steak'),
+	('639785314103', 'Bell Peppers'),
+	('033383600512', 'White Onion'),
+	('605806001390', 'Potatoe'),
+	('070404000241', 'Olive Oil'),
+	('052100103532', 'Garlic Salt'),
+	('813568000401', 'Paprika'),
+	('024600010979', 'Sea Salt'),
+	('716350202956', 'Cilantro');
+WITH Rec AS (SELECT ID 
+	FROM Recipe
+	WHERE Recipe.name = 'Steak and Potatoe Hash'),
+Ste AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Steak'),
+Bel AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Bell Peppers'),
+Whi AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'White Onion'),
+Pot AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Potatoe'),
+Oli AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Olive Oil'),
+Gar AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Garlic Salt'),
+Pap AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Paprika'),
+Sea  AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Sea Salt'),
+Cil AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Cilantro')
+INSERT INTO RecipeIngredients (RecipeID, IngredientID, Amount, Unit)
+VALUES ((SELECT ID FROM Rec), (SELECT ID FROM Ste), 1, 'flank steak'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Bel), 3, 'whole'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Whi), 1, 'small'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Pot), 1, 'bag'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Oli), 3, 'teaspoons'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Gar), 2, 'teaspoons'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Pap), 4, 'teaspoons'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Sea), 2, 'teaspoons'),
+	((SELECT ID FROM Rec), (SELECT ID FROM Cil), 1, 'pinch'); 
+
+
+INSERT INTO Recipe (RecipeNumber, Name, Description)
+VALUES (54, 'Carbonara', 'In boiling salted water, cook pasta. In a small bowl, whisk together eggs and Parmesan. 
+	Heat a large skillet over medium high heat. Add bacon and cook. Stir in garlic.Working quickly, stir in pasta and egg mixture.
+	Add reserved pasta water, one tablespoon at a time, until desired consistency. season with salt and pepper.');
+INSERT INTO Ingredient (Barcode, Name)
+VALUES ('076808533576', 'Spaghetti'),
+	('861745000003', 'Eggs'),
+	('041253163005', 'Garlic'),
+	('025317123335', 'Bacon'),
+	('619730387635', 'Parmesan'),
+	('033844000240', 'Black Pepper');
+WITH Car AS (SELECT ID 
+	FROM Recipe
+	WHERE Recipe.name = 'Carbonara'),
+Spa AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Spaghetti'),
+Egg AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Eggs'),
+Gar AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Garlic'),
+Bac AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Bacon'),
+Par AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Parmesan'),
+Sea AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Sea Salt'),
+Bla AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Black Pepper')
+INSERT INTO RecipeIngredients (RecipeID, IngredientID, Amount, Unit)
+VALUES ((SELECT ID FROM Car), (SELECT ID FROM Spa), 8, 'ounces'),
+	((SELECT ID FROM Car), (SELECT ID FROM Egg), 2, 'large'),
+	((SELECT ID FROM Car), (SELECT ID FROM Gar), 4, 'cloves'),
+	((SELECT ID FROM Car), (SELECT ID FROM Bac), 4, 'slices'),
+	((SELECT ID FROM Car), (SELECT ID FROM Par), 0.5, 'cup'),
+	((SELECT ID FROM Car), (SELECT ID FROM Sea), 0.5, 'tea spoon'),
+	((SELECT ID FROM Car), (SELECT ID FROM Bla), 0.5, 'tea spoon');
+
+
+
+INSERT INTO Recipe (RecipeNumber, Name, Description)
+VALUES (72, 'Slow Cooker Lemon Garlic Chicken', 'Cut garlic heads and lemons in half and lay in bottom of slow cooker.
+	Add a sprig of rosemary, Season chicken well, Lay chicken on top of garlic and lemon slices and stuff the 
+	chicken with a garlic head cut in half, and a lemon cut in quarters. Cover top of chicken with additional lemon slices and rosemary.
+	Turn slow cooker to high, and cook for about 4 hours, or until chicken reaches 165 degrees.');
+INSERT INTO Ingredient (Barcode, Name)
+VALUES ('079908567576', 'Lemon'),
+	('861745000113', 'Chicken'),
+	('025317120005', 'Rosemary');
+WITH Slow AS (SELECT ID 
+	FROM Recipe
+	WHERE Recipe.name = 'Slow Cooker Lemon Garlic Chicken'),
+lem AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Lemon'),
+chi AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Chicken'),
+ros AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Rosemary'),
+gar AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Garlic'),
+Sea AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Sea Salt'),
+Bla AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Black Pepper')
+INSERT INTO RecipeIngredients (RecipeID, IngredientID, Amount, Unit)
+VALUES ((SELECT ID FROM Slow), (SELECT ID FROM lem), 4, 'whole'),
+	((SELECT ID FROM Slow), (SELECT ID FROM chi), 1, 'whole'),
+	((SELECT ID FROM Slow), (SELECT ID FROM ros), 1, 'sprig'),
+	((SELECT ID FROM Slow), (SELECT ID FROM gar), 3, 'heads'),
+	((SELECT ID FROM Slow), (SELECT ID FROM Sea), 1, 'tea spoon'),
+	((SELECT ID FROM Slow), (SELECT ID FROM Bla), 1, 'tea spoon');
+
+
+INSERT INTO Recipe (RecipeNumber, Name, Description)
+VALUES (12, 'Pesto Chicken Stuffed Peppers', 'Turn on broiler to high. Place bell 
+	peppers under broiler and broil from 5 minutes on each side until skin blisters and begins to turn black.
+	Remove peppers from oven, set aside. Preheat oven to 350 degrees.
+	In a medium size mixing bowl combine the shredded chicken with 1 cup shredded cheese, the pesto and the quinoa and toss to coat.
+	Once peppers are cool enough to handle, slice in half and remove membranes and seeds. Add a heaping 1/4 cup of the chicken mixture to 
+	each pepper and top with cheese. Bake for 10 minutes.');
+INSERT INTO Ingredient (Barcode, Name)
+VALUES ('031142000887', 'Mozzarella'),
+	('074401750291', 'Quinoa'),
+	('073214009527', 'Pesto');
+WITH Pestochicken AS (SELECT ID 
+	FROM Recipe
+	WHERE Recipe.name = 'Pesto Chicken Stuffed Peppers'),
+moz AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name ='Mozzarella'),
+Qui AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Quinoa'),
+Pes AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Pesto'),
+chi AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Chicken'),
+Bel AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Bell Peppers')
+INSERT INTO RecipeIngredients (RecipeID, IngredientID, Amount, Unit)
+VALUES ((SELECT ID FROM Pestochicken), (SELECT ID FROM Pes), 1, 'jar'),
+	((SELECT ID FROM Pestochicken), (SELECT ID FROM moz), 1.5, 'cups'),
+	((SELECT ID FROM Pestochicken), (SELECT ID FROM Qui), 1, 'cup'),
+	((SELECT ID FROM Pestochicken), (SELECT ID FROM chi), 2, 'breasts'),
+	((SELECT ID FROM Pestochicken), (SELECT ID FROM Bel), 6, 'whole');
+
+
+INSERT INTO Recipe (RecipeNumber, Name, Description)
+VALUES (29, 'Bacon Asparagus Pasta', 'Cook the pasta in a large pot. Meanwhile, add bacon to a medium saute pan.
+	Remove the bacon with a slotted spoon and set aside. Add asparagus to the pan and saute in the bacon grease 
+	for about 5-6 minutes, stirring occasionally, until cooked. Remove asparagus with a slotted spoon, and set aside 
+	with the bacon. Slowly add the white wine to the pan, and scape the bottom of the pan with a spoon to deglaze 
+	the pan and pick up all of those yummy brown bits. Continue cooking for 5 minutes, or until the wine has reduced 
+	by about half.');
+INSERT INTO Ingredient (Barcode, Name)
+VALUES ('855500002708', 'Asparagus'),
+	('850573005052', 'White wine');
+WITH bap AS (SELECT ID 
+	FROM Recipe
+	WHERE Recipe.name = 'Bacon Asparagus Pasta'),
+Asp AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Asparagus'),
+Whi AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'White wine'),
+Bac AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Bacon'),
+Par AS (SELECT ID 
+	FROM Ingredient
+	WHERE Ingredient.name = 'Parmesan'),
+Spa AS (SELECT ID 
+	FROM Ingredient
+		WHERE Ingredient.name = 'Spaghetti')
+INSERT INTO RecipeIngredients (RecipeID, IngredientID, Amount, Unit)
+VALUES ((SELECT ID FROM bap), (SELECT ID FROM Asp), 0.5, 'lb'),
+	((SELECT ID FROM bap), (SELECT ID FROM Whi), 0.5, 'cup'),
+	((SELECT ID FROM bap), (SELECT ID FROM Bac), 0.5, 'lb'),
+	((SELECT ID FROM bap), (SELECT ID FROM Par), 0.5, 'cup'),
+	((SELECT ID FROM bap), (SELECT ID FROM Spa), 0.5, 'lb');
+COMMIT;

@@ -1,0 +1,143 @@
+\qecho CoffeeBreadSnake
+\qecho
+
+CREATE DATABASE recipefinder;
+\qecho
+
+\c recipefinder
+\qecho
+
+CREATE TABLE State (
+	ID		VARCHAR(2)	not null,
+	Description	VARCHAR(15)	not null,
+	
+	Primary Key	(ID)
+);
+
+CREATE TABLE Store (
+	ID		SERIAL		not null,
+	StoreNumber	INTEGER		not null unique,
+	Street		VARCHAR(25)	not null,
+	City		VARCHAR(20)	not null,
+	State		VARCHAR(2)	not null,
+	Zipcode		INTEGER		not null,
+
+	Primary Key	(ID),
+	Foreign Key	(State) references State(ID)
+			Deferrable Initially Deferred
+);
+
+CREATE TABLE Customer (
+	ID		SERIAL		not null,
+	StoreID		INTEGER		,
+	FirstName	VARCHAR(15)	not null,
+	MiddleName	VARCHAR(15)	,
+	LastName	VARCHAR(20)	not null,
+	email		VARCHAR(40)	not null unique,
+	password	VARCHAR(10)	not null,
+
+	Primary Key	(ID),
+	Foreign Key	(StoreID) references Store(ID)
+			Deferrable Initially Deferred
+);
+
+CREATE TABLE Recipe (
+	ID		SERIAL		not null,
+	RecipeNumber	INTEGER		not null unique,
+	Name		VARCHAR(50)	not null,
+	Description	VARCHAR(1000)	not null,
+
+	Primary Key	(ID)
+);
+
+CREATE TABLE Ingredient (
+	ID		SERIAL		not null,
+	Barcode		VARCHAR(12)	not null unique,
+	Name		VARCHAR(25)	not null,
+
+	Primary Key	(ID)
+);
+
+CREATE TABLE Stock (
+	StoreID		INTEGER		not null,
+	IngredientID	INTEGER		not null,
+	Price		DECIMAL		not null,
+	InStock		BOOLEAN		not null,
+	Aisle		INTEGER		not null,
+
+	Primary Key	(StoreID, IngredientID),
+	Foreign Key	(StoreID) references Store(ID)
+			Deferrable Initially Deferred,
+	Foreign Key	(IngredientID) references Ingredient(ID)
+			Deferrable Initially Deferred
+);
+
+
+CREATE TABLE ChosenIngredients (
+	CustomerID	INTEGER		not null,
+	IngredientID	INTEGER		not null,
+
+	Primary Key	(CustomerID, IngredientID),
+	Foreign Key	(CustomerID) references Customer(ID)
+			Deferrable Initially Deferred,
+	Foreign Key	(IngredientID) references Ingredient(ID)
+			Deferrable Initially Deferred
+);
+
+CREATE TABLE ChosenRecipes (
+	CustomerID	INTEGER		not null,
+	RecipeID	INTEGER		not null,
+
+	Primary Key	(CustomerID, RecipeID),
+	Foreign Key	(CustomerID) references Customer(ID)
+			Deferrable Initially Deferred,
+	Foreign Key	(RecipeID) references Recipe(ID)
+			Deferrable Initially Deferred
+);
+
+CREATE TABLE RecipeIngredients (
+	RecipeID	INTEGER		not null,
+	IngredientID	INTEGER		not null,
+	Amount		DECIMAL		not null,
+	Unit		VARCHAR(30)	not null,
+
+	Primary Key	(RecipeID, IngredientID),
+	Foreign Key	(RecipeID) references Recipe(ID)
+			Deferrable Initially Deferred,
+	Foreign Key	(IngredientID) references Ingredient(ID)
+			Deferrable Initially Deferred
+);
+
+\d
+\qecho
+
+\qecho State
+\d state
+
+\qecho Store
+\d store
+
+\qecho Customer
+\d customer
+
+\qecho Ingredient
+\d ingredient
+
+\qecho Recipe
+\d recipe
+
+\qecho Stock
+\d stock
+
+\qecho ChosenIngredients
+\d choseningredients
+
+\qecho ChosenRecipes
+\d chosenrecipes
+
+\qecho RecipeIngredients
+\d recipeingredients
+
+\c postgres
+
+--DROP DATABASE recipefinder;

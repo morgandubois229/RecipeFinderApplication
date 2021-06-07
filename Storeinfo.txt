@@ -1,0 +1,616 @@
+BEGIN;
+INSERT INTO Store (StoreNumber, Street, City, State, Zipcode)
+VALUES ('583614', 'Store St.', 'CityName', 'WA', '98525'),
+    ('583999', '2622 California Ave SW', 'Seattle', 'WA', '98116'),
+    ('703517', '3820 Rainier Ave S', 'Seattle', 'WA', '98118'),
+    ('654891', '9262 Rainier Ave S', 'Seattle', 'WA', '98118'),
+    ('008912', '642 NE 3rd', 'Bend', 'OR', '97701');
+WITH Storeid AS (
+	SELECT ID
+	FROM Store S
+	WHERE S.StoreNumber = 583614
+), steak AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Steak'
+), bellpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bell Peppers'
+), whiteonion AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White Onion'
+), potatoe AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Potatoe'
+), oliveoil AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Olive Oil'
+), garlicsalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic Salt'
+), paprika AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Paprika'
+), seasalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Sea Salt'
+), cilantro AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Cilantro'
+), spaghetti AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Spaghetti'
+), eggs AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Eggs'
+), garlic AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic'
+), bacon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bacon'
+), parmasan AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Parmesan'
+), blackpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Black Pepper'
+), lemon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Lemon'
+), chicken AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Chicken'
+), rosemary AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Rosemary'
+), mozzarella AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Mozzarella'
+), quinoa AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Quinoa'
+), pesto AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Pesto'
+), asparagus AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Asparagus'
+), whitewine AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White wine'
+)
+INSERT INTO Stock (StoreID, IngredientID, Price, InStock, Aisle)
+VALUES ((SELECT ID FROM Storeid), (SELECT ID FROM steak), 17.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bellpepper), 1.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whiteonion), 1.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM oliveoil), 12.99, true, 18),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlicsalt), 3.99, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM paprika), 4.29, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM seasalt), 2.69, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM cilantro), 0.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM spaghetti), 1.59, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM eggs), 4.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlic), 0.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bacon), 11.99, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM parmasan), 4.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM blackpepper), 3.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM lemon), 1.29, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM chicken), 17.16, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM rosemary), 4.29, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM mozzarella), 8.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM quinoa), 7.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM pesto), 2.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM asparagus), 4.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whitewine), 14.99, true, 5);
+
+WITH Storeid AS (
+	SELECT ID
+	FROM Store S
+	WHERE S.StoreNumber = 583999
+), steak AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Steak'
+), bellpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bell Peppers'
+), whiteonion AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White Onion'
+), potatoe AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Potatoe'
+), oliveoil AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Olive Oil'
+), garlicsalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic Salt'
+), paprika AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Paprika'
+), seasalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Sea Salt'
+), cilantro AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Cilantro'
+), spaghetti AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Spaghetti'
+), eggs AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Eggs'
+), garlic AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic'
+), bacon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bacon'
+), parmasan AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Parmesan'
+), blackpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Black Pepper'
+), lemon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Lemon'
+), chicken AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Chicken'
+), rosemary AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Rosemary'
+), mozzarella AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Mozzarella'
+), quinoa AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Quinoa'
+), pesto AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Pesto'
+), asparagus AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Asparagus'
+), whitewine AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White wine'
+)
+INSERT INTO Stock (StoreID, IngredientID, Price, InStock, Aisle)
+VALUES ((SELECT ID FROM Storeid), (SELECT ID FROM steak), 15.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bellpepper), 1.99, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whiteonion), 1.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM oliveoil), 11.00, true, 19),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlicsalt), 3.99, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM paprika), 4.29, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM seasalt), 2.69, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM cilantro), 0.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM spaghetti), 1.59, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM eggs), 4.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlic), 0.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bacon), 11.99, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM parmasan), 4.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM blackpepper), 3.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM lemon), 1.00, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM chicken), 17.16, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM rosemary), 4.00, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM mozzarella), 8.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM quinoa), 7.99, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM pesto), 2.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM asparagus), 4.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whitewine), 14.99, true, 3);
+
+WITH Storeid AS (
+	SELECT ID
+	FROM Store S
+	WHERE S.StoreNumber = 703517
+), steak AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Steak'
+), bellpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bell Peppers'
+), whiteonion AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White Onion'
+), potatoe AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Potatoe'
+), oliveoil AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Olive Oil'
+), garlicsalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic Salt'
+), paprika AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Paprika'
+), seasalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Sea Salt'
+), cilantro AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Cilantro'
+), spaghetti AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Spaghetti'
+), eggs AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Eggs'
+), garlic AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic'
+), bacon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bacon'
+), parmasan AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Parmesan'
+), blackpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Black Pepper'
+), lemon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Lemon'
+), chicken AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Chicken'
+), rosemary AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Rosemary'
+), mozzarella AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Mozzarella'
+), quinoa AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Quinoa'
+), pesto AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Pesto'
+), asparagus AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Asparagus'
+), whitewine AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White wine'
+)
+INSERT INTO Stock (StoreID, IngredientID, Price, InStock, Aisle)
+VALUES ((SELECT ID FROM Storeid), (SELECT ID FROM steak), 17.00, true, 30),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bellpepper), 1.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whiteonion), 1.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM oliveoil), 12.99, false, 17),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlicsalt), 3.99, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM paprika), 4.29, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM seasalt), 2.69, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM cilantro), 0.99, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM spaghetti), 1.59, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM eggs), 5.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlic), 0.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bacon), 11.99, true, 30),
+	((SELECT ID FROM Storeid), (SELECT ID FROM parmasan), 4.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM blackpepper), 3.49, false, 30),
+	((SELECT ID FROM Storeid), (SELECT ID FROM lemon), 1.29, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM chicken), 17.16, true, 30),
+	((SELECT ID FROM Storeid), (SELECT ID FROM rosemary), 4.29, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM mozzarella), 8.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM quinoa), 7.50, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM pesto), 2.30, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM asparagus), 4.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whitewine), 17.99, true, 5);
+
+WITH Storeid AS (
+	SELECT ID
+	FROM Store S
+	WHERE S.StoreNumber = 008912
+), steak AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Steak'
+), bellpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bell Peppers'
+), whiteonion AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White Onion'
+), potatoe AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Potatoe'
+), oliveoil AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Olive Oil'
+), garlicsalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic Salt'
+), paprika AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Paprika'
+), seasalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Sea Salt'
+), cilantro AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Cilantro'
+), spaghetti AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Spaghetti'
+), eggs AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Eggs'
+), garlic AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic'
+), bacon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bacon'
+), parmasan AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Parmesan'
+), blackpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Black Pepper'
+), lemon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Lemon'
+), chicken AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Chicken'
+), rosemary AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Rosemary'
+), mozzarella AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Mozzarella'
+), quinoa AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Quinoa'
+), pesto AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Pesto'
+), asparagus AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Asparagus'
+), whitewine AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White wine'
+)
+INSERT INTO Stock (StoreID, IngredientID, Price, InStock, Aisle)
+VALUES ((SELECT ID FROM Storeid), (SELECT ID FROM steak), 17.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bellpepper), 1.59, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whiteonion), 1.49, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM oliveoil), 12.99, false, 18),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlicsalt), 4.99, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM paprika), 4.50, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM seasalt), 2.69, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM cilantro), 1.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM spaghetti), 1.65, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM eggs), 4.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlic), 0.75, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bacon), 11.99, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM parmasan), 4.99, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM blackpepper), 3.75, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM lemon), 1.29, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM chicken), 16.16, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM rosemary), 4.49, false, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM mozzarella), 9.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM quinoa), 7.49, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM pesto), 2.79, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM asparagus), 4.59, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whitewine), 14.99, false, 5);
+
+WITH Storeid AS (
+	SELECT ID
+	FROM Store S
+	WHERE S.StoreNumber = 654891
+), steak AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Steak'
+), bellpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bell Peppers'
+), whiteonion AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White Onion'
+), potatoe AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Potatoe'
+), oliveoil AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Olive Oil'
+), garlicsalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic Salt'
+), paprika AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Paprika'
+), seasalt AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Sea Salt'
+), cilantro AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Cilantro'
+), spaghetti AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Spaghetti'
+), eggs AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Eggs'
+), garlic AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Garlic'
+), bacon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Bacon'
+), parmasan AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Parmesan'
+), blackpepper AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Black Pepper'
+), lemon AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Lemon'
+), chicken AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Chicken'
+), rosemary AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Rosemary'
+), mozzarella AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Mozzarella'
+), quinoa AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Quinoa'
+), pesto AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Pesto'
+), asparagus AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'Asparagus'
+), whitewine AS (
+	SELECT ID
+	FROM Ingredient I
+	WHERE I.name = 'White wine'
+)
+INSERT INTO Stock (StoreID, IngredientID, Price, InStock, Aisle)
+VALUES ((SELECT ID FROM Storeid), (SELECT ID FROM steak), 17.49, false, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bellpepper), 1.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whiteonion), 1.49, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM oliveoil), 12.99, true, 18),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlicsalt), 3.99, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM paprika), 4.29, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM seasalt), 2.69, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM cilantro), 0.99, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM spaghetti), 1.59, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM eggs), 4.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM garlic), 0.49, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM bacon), 11.99, false, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM parmasan), 4.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM blackpepper), 3.49, true, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM lemon), 1.29, false, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM chicken), 17.16, false, 25),
+	((SELECT ID FROM Storeid), (SELECT ID FROM rosemary), 4.29, true, 15),
+	((SELECT ID FROM Storeid), (SELECT ID FROM mozzarella), 8.99, true, 23),
+	((SELECT ID FROM Storeid), (SELECT ID FROM quinoa), 7.99, true, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM pesto), 2.99, false, 16),
+	((SELECT ID FROM Storeid), (SELECT ID FROM asparagus), 4.99, true, 20),
+	((SELECT ID FROM Storeid), (SELECT ID FROM whitewine), 14.99, false, 5);
+
+
+
+
+COMMIT;
